@@ -1,6 +1,6 @@
 PhyloFacts 4.0
 ==============
-PhyloFacts is a product of the Sjölander lab, California Institute for Quantitative Biosciences, UC Berkeley.
+PhyloFacts is a product of the Sjölander lab (Prof. Kimmen Sjölander, PI), California Institute for Quantitative Biosciences, UC Berkeley.
 
 The PhyloFacts web resource is a collection of protein families with phylogenetic trees, some sharing individual structural or functional domains and others sharing whole domain architectures.   The PhyloFacts resource integrates a wealth of information on protein families from across the Tree of Life. For each family, PhyloFacts includes a multiple sequence alignment, one or more phylogenetic trees, predicted 3D protein structures, cellular localization, and Gene Ontology (GO) annotations and evidence codes. PhyloFacts includes hidden Markov models for classification of user-submitted protein sequences to protein families across the Tree of Life. 
 
