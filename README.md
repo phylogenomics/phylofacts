@@ -6,4 +6,8 @@ The PhyloFacts web resource is a collection of protein families with phylogeneti
 
 The protein families in PhyloFacts typically contain homologs from many species. The phylogenetic distribution of a protein family can vary from highly restricted (e.g., mammals) to throughout the Tree of Life. Gathering homologs from many divergent species enables us to take advantage of experimental investigations in different systems, and allows powerful inferences of function and structure that might not otherwise be possible.
 
+Developer Team (as of 6/24/11):
+
+Nicholas Letourneau
+Shailen Tuli
 
