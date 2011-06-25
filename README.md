@@ -8,6 +8,6 @@ The protein families in PhyloFacts typically contain homologs from many species.
 
 Developer Team (as of 6/24/11):
 
-Nicholas Letourneau  
-Shailen Tuli
+[Nicholas Letourneau](http://github.com/nletourneau)  
+[Shailen Tuli](http://github.com/shailen)
 
