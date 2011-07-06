@@ -10,6 +10,9 @@ gem 'sqlite3'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"
+  gem "shoulda"
+  gem "cucumber-rails"
+  gem "database_cleaner"
 end
 
 # Use unicorn as the web server
