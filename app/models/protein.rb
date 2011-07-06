@@ -1,3 +1,3 @@
 class Protein < ActiveRecord::Base
-  has_mane :UniprotAccessions
+  has_many :UniprotAccessions
 end
