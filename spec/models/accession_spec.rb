@@ -11,4 +11,9 @@ describe Accession do
     accession = Accession.new
     lambda {accession.save!}.should raise_error(ActiveRecord::RecordInvalid)
   end
+
+  it "should require the accession string to be unique" do
+    Accession.create(:accession => "P12345")
+    lambda {Accession.create!(:accession => "P12345")}.should raise_error(ActiveRecord::RecordInvalid, "Validation failed: Accession has already been taken")
+  end
 end
