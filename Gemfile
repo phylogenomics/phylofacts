@@ -14,7 +14,7 @@ group :test, :development do
   gem 'rspec-rails', '~> 2.4'
   gem 'shoulda'
   gem 'cucumber-rails'
-  gem 'spork'
+  gem 'spork', '~> 0.9.0.rc'
   gem 'database_cleaner'
 end
 
