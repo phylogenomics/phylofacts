@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110707002638) do
+ActiveRecord::Schema.define(:version => 20110711234213) do
+
+  create_table "accession_links", :id => false, :force => true do |t|
+    t.integer  "protein_id"
+    t.integer  "accession_id"
+    t.boolean  "primary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accession_links", ["protein_id", "accession_id"], :name => "index_protein_accessions_on_protein_id_and_accession_id", :unique => true
 
   create_table "accessions", :force => true do |t|
     t.string   "accession"
@@ -20,16 +30,6 @@ ActiveRecord::Schema.define(:version => 20110707002638) do
   end
 
   add_index "accessions", ["accession"], :name => "index_accessions_on_accession", :unique => true
-
-  create_table "protein_accessions", :id => false, :force => true do |t|
-    t.integer  "protein_id"
-    t.integer  "accession_id"
-    t.boolean  "primary"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "protein_accessions", ["protein_id", "accession_id"], :name => "index_protein_accessions_on_protein_id_and_accession_id", :unique => true
 
   create_table "proteins", :force => true do |t|
     t.text     "sequence"

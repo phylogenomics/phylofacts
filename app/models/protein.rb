@@ -1,4 +1,7 @@
+require 'bio/db/embl/sptr201107'
+
 class Protein < ActiveRecord::Base
-  has_many :protein_accessions
-  has_many :accessions, :through => :protein_accessions
+  has_many :accession_links
+  has_many :accessions, :through => :accession_links
+
 end

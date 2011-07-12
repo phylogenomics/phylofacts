@@ -12,7 +12,7 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.4'
-  gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'cucumber-rails'
   gem 'spork', '~> 0.9.0.rc'
   gem 'database_cleaner'
