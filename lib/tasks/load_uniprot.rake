@@ -1,26 +1,32 @@
+require 'bio/db/embl/sptr201107'
+
 namespace :db do
   desc "Load seed uniprot data into the database." 
   task :load_uniprot, [:uniprot_data_path] => :environment do |t, args|
-    require 'bio/db/embl/sptr201107'
+    filename = args[:uniprot_data_path]
 
-    uniprot_string = File.read(args[:uniprot_data_path])
-    uniprot_data = Bio::SPTR201107.new(uniprot_string)
-
-    prot = Protein.new
-    prot.sequence = uniprot_data.seq
-    primary_accession = true
-    accessions_mapping = uniprot_data.accessions.each.map do |accession|
-      ua = UniprotAccession.new
-      ua.accession = accession
-      pa = ProteinAccession.new
-      pa.primary = primary_accession
-      primary_accession = false
-      ua.save
-      pa.accession_id = ua.id
-      pa
+    unless File.exists?(filename)
+      $stderr.puts "Could not find #{filename}"
+      exit 1
     end
 
-    prot.protein_accessions = accessions_mapping
-    prot.save
+    uniprot_dat = File.new(filename)
+
+    current_protein = ''
+    found_proteins = 0;
+    while (line = uniprot_dat.gets)
+      current_protein << line
+
+      if (line =~ /^\/\//) != nil
+        Protein.create_from_uniprot(current_protein)
+        if found_proteins % 100 == 0
+          puts "loaded #{found_proteins} proteins"
+        end
+        found_proteins += 1
+        current_protein = ''
+      end
+    end
+    uniprot_dat.close
+    puts "finished loading #{found_proteins} proteins from #{filename}"
   end
 end
