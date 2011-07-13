@@ -14,7 +14,7 @@ class ProteinsController < ApplicationController
   # GET /proteins/1
   # GET /proteins/1.xml
   def show
-    @protein = Protein.find(params[:id])
+    @protein = Protein.from_param(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

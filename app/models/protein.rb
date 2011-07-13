@@ -1,9 +1,25 @@
 require 'bio/db/embl/sptr201107'
 
 class Protein < ActiveRecord::Base
+  has_one :primary_accession, :through => :accession_links, :conditions => ['"accession_links"."primary" = ?', true], :source => :accession
   has_many :accession_links
   has_many :accessions, :through => :accession_links
 
+  def to_param
+    primary_accession.accession
+  end
+
+  def self.from_param(param)
+    find_by_primary_accession(param)
+  end
+
+  def self.find_by_primary_accession(accession)
+    accession = Accession.find_by_accession(accession)
+    raise ActiveRecord::RecordNotFound if accession.nil?
+    al = accession.accession_links.find(:first, :conditions => {:primary => true})
+    raise ActiveRecord::RecordNotFound if al.nil? || al.protein.nil?
+    al.protein
+  end
 
   def append_accessions(accessions, type)
     self.accessions << accessions.each.inject([]) do |array, ac_string|
