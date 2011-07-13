@@ -1,0 +1,15 @@
+<h1>Listing Proteins</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>seq</th>
+  </tr>
+
+<% @proteins.each do |protein| %>
+  <tr>
+    <td><%= link_to 'Show', protein %></td>
+    <td><%= protein.sequence[0, 32] %></td>
+  </tr>
+<% end %>
+</table>
