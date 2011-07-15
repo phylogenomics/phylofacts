@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Protein
+  
+    &mdash; Documentation by YARD 0.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (P)</a> &raquo; 
+    
+    
+    <span class="title">Protein</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Protein
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Protein</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">Tire::Model::Callbacks, Tire::Model::Persistence, Tire::Model::Search</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">app/models/protein.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Protein object with all storage done in elasticsearch and loading from the
+phylogenomics group version of <a href="https://github.com/phylogenomics/bioruby" target="_parent" title="bioruby">bioruby</a>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Author:</h3>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+<a href="http://github.com/nletourneau" target="_parent" title="Nicholas Letourneau">Nicholas Letourneau</a>
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="per_page-classvariable" class="">@@per_page =
+          
+        </dt>
+        <dd><pre class="code"><span class='int'>20</span></pre></dd>
+      
+    </dl>
+  
+
+
+  
+  
+  
+
+
+  
+  
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_from_uniprot-class_method" title="create_from_uniprot (class method)">+ (Protein) <strong>create_from_uniprot</strong>(uniprot_string) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Creates and saves a new protein object population all the fields it can
+from a uniprot protein string.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new_from_uniprot-class_method" title="new_from_uniprot (class method)">+ (Protein) <strong>new_from_uniprot</strong>(uniprot_string) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Creates a new protein object population all the fields it can from a
+uniprot protein string.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="create_from_uniprot-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="Protein (class)">Protein</a></span></tt>) <strong>create_from_uniprot</strong>(uniprot_string) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Creates and saves a new protein object population all the fields it can
+from a uniprot protein string
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>uniprot_string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+A string containing a single uniprot protein data file ex: (<a
+href="http://www.uniprot.org/uniprot/P11086.txt">www.uniprot.org/uniprot/P11086.txt</a>)
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Protein (class)">Protein</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+An saved Protein object
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93
+94
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/protein.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id create_from_uniprot'>create_from_uniprot</span><span class='lparen'>(</span><span class='id uniprot_string'>uniprot_string</span><span class='rparen'>)</span>
+  <span class='id prot'>prot</span> <span class='op'>=</span> <span class='const'>Protein</span><span class='period'>.</span><span class='id new_from_uniprot'>new_from_uniprot</span><span class='lparen'>(</span><span class='id uniprot_string'>uniprot_string</span><span class='rparen'>)</span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id save'>save</span>
+  <span class='id prot'>prot</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="new_from_uniprot-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="Protein (class)">Protein</a></span></tt>) <strong>new_from_uniprot</strong>(uniprot_string) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Creates a new protein object population all the fields it can from a
+uniprot protein string
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>uniprot_string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+A string containing a single uniprot protein data file ex: (<a
+href="http://www.uniprot.org/uniprot/P11086.txt">www.uniprot.org/uniprot/P11086.txt</a>)
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Protein (class)">Protein</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+An unsaved Protein object
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/protein.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id new_from_uniprot'>new_from_uniprot</span><span class='lparen'>(</span><span class='id uniprot_string'>uniprot_string</span><span class='rparen'>)</span>
+  <span class='id uniprot_data'>uniprot_data</span> <span class='op'>=</span> <span class='const'>Bio</span><span class='op'>::</span><span class='const'>SPTR201107</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id uniprot_string'>uniprot_string</span><span class='rparen'>)</span>
+  
+  <span class='id prot'>prot</span> <span class='op'>=</span> <span class='const'>Protein</span><span class='period'>.</span><span class='id new'>new</span>
+
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id id'>id</span>               <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id accession'>accession</span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id entry_status'>entry_status</span>     <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id id_line'>id_line</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DATA_CLASS</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id protein_name'>protein_name</span>     <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id protein_name'>protein_name</span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id sequence'>sequence</span>         <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id seq'>seq</span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id sequence_length'>sequence_length</span>  <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id sequence_length'>sequence_length</span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id accessions'>accessions</span>       <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id accessions'>accessions</span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id synonyms'>synonyms</span>         <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id synonyms'>synonyms</span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id entry_id'>entry_id</span>         <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id entry_id'>entry_id</span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id keywords'>keywords</span>         <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id keywords'>keywords</span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id ncbi_taxonomy_id'>ncbi_taxonomy_id</span> <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id ox'>ox</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>NCBI_TaxID</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id ox'>ox</span><span class='period'>.</span><span class='id has_key?'>has_key?</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>NCBI_TaxID</span><span class='tstring_end'>'</span></span>
+  <span class='id prot'>prot</span><span class='period'>.</span><span class='id comments'>comments</span>         <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id cc'>cc</span>
+
+  <span class='kw'>if</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id os'>os</span><span class='period'>.</span><span class='id length'>length</span> <span class='op'>&gt;=</span> <span class='int'>1</span>
+    <span class='id organism'>organism</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='kw'>if</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id os'>os</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id has_key?'>has_key?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>os</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id organism'>organism</span><span class='lbracket'>[</span><span class='symbol'>:scientific_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id os'>os</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>os</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id os'>os</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id has_key?'>has_key?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id os'>os</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id nil?'>nil?</span>
+      <span class='id organism'>organism</span><span class='lbracket'>[</span><span class='symbol'>:common_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id os'>os</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[\)\(]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id prot'>prot</span><span class='period'>.</span><span class='id organism'>organism</span> <span class='op'>=</span> <span class='id organism'>organism</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id dr'>dr</span><span class='period'>.</span><span class='id has_key?'>has_key?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GO</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id prot'>prot</span><span class='period'>.</span><span class='id go'>go</span> <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id dr'>dr</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GO</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id inject'>inject</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id array'>array</span><span class='comma'>,</span> <span class='id go_ref'>go_ref</span><span class='op'>|</span>
+      <span class='id array'>array</span> <span class='op'>&lt;&lt;</span> <span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id go_ref'>go_ref</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:term</span> <span class='op'>=&gt;</span> <span class='id go_ref'>go_ref</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:evidence</span> <span class='op'>=&gt;</span> <span class='id go_ref'>go_ref</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id dr'>dr</span><span class='period'>.</span><span class='id has_key?'>has_key?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Pfam</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id prot'>prot</span><span class='period'>.</span><span class='id pfam'>pfam</span> <span class='op'>=</span> <span class='id uniprot_data'>uniprot_data</span><span class='period'>.</span><span class='id dr'>dr</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Pfam</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id inject'>inject</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id array'>array</span><span class='comma'>,</span> <span class='id pfam_ref'>pfam_ref</span><span class='op'>|</span>
+      <span class='id array'>array</span> <span class='op'>&lt;&lt;</span> <span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id pfam_ref'>pfam_ref</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:entry_name</span> <span class='op'>=&gt;</span> <span class='id pfam_ref'>pfam_ref</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:match_status</span> <span class='op'>=&gt;</span> <span class='id pfam_ref'>pfam_ref</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id prot'>prot</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Jul 15 15:07:02 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.2 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,5 @@
+app/models/protein.rb bb35be358fdb6569ce76ebfc7ad2ace33dc575a6
+app/helpers/proteins_helper.rb 1904655a8942b628ddb804cb6c6b7389db4f36b5
+app/helpers/application_helper.rb eef3d3adce96afe8b14c19b6135323f47543d979
+app/controllers/proteins_controller.rb 462b3f3bc20913422e1234de3c1e1e10ce889a4f
+app/controllers/application_controller.rb 2036468398e54b3fc8af23cb6f9e1716293320eb
