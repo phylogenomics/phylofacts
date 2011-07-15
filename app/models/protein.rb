@@ -1,5 +1,10 @@
 require 'bio/db/embl/sptr201107'
 
+# @author {http://github.com/nletourneau Nicholas Letourneau}
+#
+# Protein object with all storage done in elasticsearch and loading from
+# the phylogenomics group version of {https://github.com/phylogenomics/bioruby bioruby}
+#
 class Protein
   @@per_page = 20
   cattr_reader :per_page
@@ -23,6 +28,14 @@ class Protein
   property :go
   property :pfam
 
+  # Creates a new protein object population all the fields it can from a
+  # uniprot protein string
+  #
+  # @param [String] uniprot_string A string containing a single uniprot
+  #   protein data file ex: (http://www.uniprot.org/uniprot/P11086.txt)
+  #
+  # @return [Protein] An unsaved Protein object
+  #
   def self.new_from_uniprot(uniprot_string)
     uniprot_data = Bio::SPTR201107.new(uniprot_string)
     
@@ -67,6 +80,14 @@ class Protein
     prot
   end
 
+  # Creates and saves a new protein object population all the fields it can
+  # from a uniprot protein string
+  #
+  # @param [String] uniprot_string A string containing a single uniprot
+  #   protein data file ex: (http://www.uniprot.org/uniprot/P11086.txt)
+  #
+  # @return [Protein] An saved Protein object
+  #
   def self.create_from_uniprot(uniprot_string)
     prot = Protein.new_from_uniprot(uniprot_string)
     prot.save
