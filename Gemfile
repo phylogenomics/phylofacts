@@ -7,7 +7,9 @@ gem 'rails', '3.0.9'
 
 gem 'sqlite3'
 gem 'bio'
+gem 'tire'
 gem 'jquery-rails'
+gem 'yajl-ruby'
 #gem 'pg'
 
 group :test, :development do
