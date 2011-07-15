@@ -1,2 +1,0 @@
-class UniprotAccession < Accession
-end

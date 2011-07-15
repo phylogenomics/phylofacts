@@ -1,5 +1,7 @@
 Phylogenomics::Application.routes.draw do
-  resources :proteins, :only => [:show, :index]
+  resources :proteins, :only => [:show, :index] do
+    collection { get :search }
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

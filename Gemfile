@@ -10,6 +10,7 @@ gem 'bio'
 gem 'tire'
 gem 'jquery-rails'
 gem 'yajl-ruby'
+gem "will_paginate", "~> 3.0.pre2"
 #gem 'pg'
 
 group :test, :development do

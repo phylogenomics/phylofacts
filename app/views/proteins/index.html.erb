@@ -1,15 +1,28 @@
 <h1>Listing Proteins</h1>
 
+<%= form_tag search_proteins_path, :method => 'get' do %>
+  <%= label_tag :query %>
+  <%= text_field_tag :q, params[:q] %>
+  <%= submit_tag :search %>
+<% end %>
+
+<p><%= "Showing results #{@from} - #{Protein.per_page*@page} of #{@proteins.total} (%0.3f seconds)" % (@proteins.time.to_f/1000) %></p>
 <table>
   <tr>
     <th></th>
-    <th>seq</th>
+    <th>accession</th>
+    <th>species</th>
+    <th>name</th>
   </tr>
 
 <% @proteins.each do |protein| %>
   <tr>
     <td><%= link_to 'Show', protein %></td>
-    <td><%= protein.sequence[0, 32] %></td>
+    <td><%= protein.accessions.join(" ") %></td>
+    <td><%= protein.organism["scientific_name"] %></td>
+    <td><%= protein.protein_name %></td>
   </tr>
 <% end %>
 </table>
+<%= will_paginate @proteins %>
+

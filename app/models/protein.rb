@@ -1,52 +1,75 @@
 require 'bio/db/embl/sptr201107'
 
-class Protein < ActiveRecord::Base
-  has_one :primary_accession, :through => :accession_links, :conditions => ['"accession_links"."primary" = ?', true], :source => :accession
-  has_many :accession_links
-  has_many :accessions, :through => :accession_links
+class Protein
+  @@per_page = 20
+  cattr_reader :per_page
 
-  def to_param
-    primary_accession.accession
-  end
+  include Tire::Model::Persistence
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
 
-  def self.from_param(param)
-    find_by_primary_accession(param)
-  end
+  property :id
+  property :entry_status
+  property :sequence
+  property :sequence_length
+  property :protein_name
+  property :organism
+  property :accessions
+  property :synonyms
+  property :entry_id
+  property :ncbi_taxonomy_id
+  property :keywords
+  property :comments
+  property :go
+  property :pfam
 
-  def self.find_by_primary_accession(accession)
-    accession = Accession.find_by_accession(accession)
-    raise ActiveRecord::RecordNotFound if accession.nil?
-    al = accession.accession_links.find(:first, :conditions => {:primary => true})
-    raise ActiveRecord::RecordNotFound if al.nil? || al.protein.nil?
-    al.protein
-  end
-
-  def append_accessions(accessions, type)
-    self.accessions << accessions.each.inject([]) do |array, ac_string|
-      array << type.new(:accession => ac_string)
-    end
-  end
-
-  def self.create_from_uniprot(uniprot_string)
+  def self.new_from_uniprot(uniprot_string)
     uniprot_data = Bio::SPTR201107.new(uniprot_string)
     
     prot = Protein.new
-    prot.sequence = uniprot_data.seq
-    
-    link = AccessionLink.new
-    link.primary = true
-    link.accession = UniprotAccession.new(:accession => uniprot_data.accession)
 
-    prot.accession_links << link
+    prot.id               = uniprot_data.accession
+    prot.entry_status     = uniprot_data.id_line["DATA_CLASS"]
+    prot.protein_name     = uniprot_data.protein_name
+    prot.sequence         = uniprot_data.seq
+    prot.sequence_length  = uniprot_data.sequence_length
+    prot.accessions       = uniprot_data.accessions
+    prot.synonyms         = uniprot_data.synonyms
+    prot.entry_id         = uniprot_data.entry_id
+    prot.keywords         = uniprot_data.keywords
+    prot.ncbi_taxonomy_id = uniprot_data.ox['NCBI_TaxID'][0] if uniprot_data.ox.has_key? 'NCBI_TaxID'
+    prot.comments         = uniprot_data.cc
 
-    prot.save
+    if uniprot_data.os.length >= 1
+      organism = {}
+      if uniprot_data.os[0].has_key? "os"
+        organism[:scientific_name] = uniprot_data.os[0]["os"]
+      end
 
-    non_primary_accessions = uniprot_data.accessions - [uniprot_data.accession]
-    unless non_primary_accessions.empty?
-      prot.append_accessions(non_primary_accessions, UniprotAccession)
-      prot.save
+      if uniprot_data.os[0].has_key? "name" && !uniprot_data.os[0]["name"].nil?
+        organism[:common_name] = uniprot_data.os[0]["name"].gsub(/[\)\(]/, '')
+      end
+      prot.organism = organism
     end
 
-    return prot
+    if uniprot_data.dr.has_key? "GO"
+      prot.go = uniprot_data.dr["GO"].inject([]) do |array, go_ref|
+        array << {:id => go_ref[0], :term => go_ref[1], :evidence => go_ref[2]}
+      end
+    end
+
+    if uniprot_data.dr.has_key? "Pfam"
+      prot.pfam = uniprot_data.dr["Pfam"].inject([]) do |array, pfam_ref|
+        array << {:id => pfam_ref[0], :entry_name => pfam_ref[1], :match_status => pfam_ref[2]}
+      end
+    end
+
+    prot
+  end
+
+  def self.create_from_uniprot(uniprot_string)
+    prot = Protein.new_from_uniprot(uniprot_string)
+    prot.save
+    prot
   end
 end
