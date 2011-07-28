@@ -1,4 +1,5 @@
 require 'bio/db/embl/sptr201107'
+require 'zlib'
 
 namespace :db do
   desc "Load seed uniprot data into the database." 
@@ -10,7 +11,7 @@ namespace :db do
       exit 1
     end
 
-    uniprot_dat = File.new(filename)
+    uniprot_dat = Zlib::GzipReader.open(filename)
 
     puts "loading proteins from #{filename}"
     Tire.index('proteins') { delete }
